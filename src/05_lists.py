@@ -21,7 +21,6 @@ x.remove(8)
 # YOUR CODE HERE
 x.insert(5, 99)
 
-
 # Print the length of list x
 # YOUR CODE HERE
 print(f"x length is {len(x)}")
