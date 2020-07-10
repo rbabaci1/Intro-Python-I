@@ -18,15 +18,49 @@ and does the following:
    the format that your program expects arguments to be given.
    Then exit the program.
 
-Note: the user should provide argument input (in the initial call to run the file) and not 
+Note: the user should provide argument input (in the initial call to run the file) and not
 prompted input. Also, the brackets around year are to denote that the argument is
 optional, as this is a common convention in documentation.
 
-This would mean that from the command line you would call `python3 14_cal.py 4 2015` to 
-print out a calendar for April in 2015, but if you omit either the year or both values, 
+This would mean that from the command line you would call `python3 14_cal.py 4 2015` to
+print out a calendar for April in 2015, but if you omit either the year or both values,
 it should use today’s date to get the month and year.
 """
 
 import sys
 import calendar
+
 from datetime import datetime
+
+userInput = sys.argv
+currentYear = datetime.today().year
+currentMonth = datetime.today().month
+
+
+def isValid(*userInput):
+    for el in userInput:
+        if (el.isdigit() is False):
+            return False
+    if (int(userInput[0]) > 12 or int(userInput[0]) < 1):
+        return False
+    return True
+
+
+def getCalendar(month, year):
+    return calendar.month(year, month, l=2, w=3)
+
+
+if (len(userInput) is 1):
+    print(f"\n{getCalendar( currentMonth,currentYear,)}\n")
+elif(len(userInput) is 2):
+    if (isValid(userInput[1])):
+        print(f"\n{getCalendar( int(userInput[1]),currentYear,)}\n")
+    else:
+        print("\n[1 >= month <= 12] must be a digit.\n")
+elif(len(userInput) is 3):
+    if (isValid(userInput[1], userInput[2])):
+        print(f"\n{getCalendar( int(userInput[1]), int(userInput[2]))}\n")
+    else:
+        print("\n[1 >= month <= 12] and [year] must be digits.\n")
+else:
+    print("\nPlease follow this format: `14_cal.py [month] [year]`\n")
