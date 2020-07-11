@@ -11,7 +11,6 @@ def isValid(userInput):
 
 
 def isPrime(userInput):
-    # run a loop from the first prime number (2) to userInput + 1 (to include it)
     if userInput == 1:
         return ("1 is not a prime number")
     if userInput == 2:
