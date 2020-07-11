@@ -1,6 +1,7 @@
 import sys
 import time
 
+
 start_time = time.time()
 
 
@@ -35,6 +36,7 @@ def isPrime(userInput, primes):
                 # every multiply of the that prime number is not prime
                 # so update it's value to 0
                 primes[j] = 0
+
     result = [i for i, p in enumerate(primes) if p == 1 and i == userInput]
     if (len(result)):
         return (f"\n*** {userInput} is a prime number. ***\n")
@@ -53,6 +55,5 @@ elif (isValid(userInput[1])):
 else:
     print(
         "\n*** Please follow this format `python3 16_isPrime.py [1 >= number]` ***\n")
-
 
 print("--- %s seconds ---" % (time.time() - start_time))
